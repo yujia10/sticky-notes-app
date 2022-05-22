@@ -1,5 +1,5 @@
 import React from "react";
-import DeleteIcon from "@mui/icons-material/Delete";
+import RemoveCircleIcon from '@mui/icons-material/RemoveCircle';
 
 function Note(props) {
   return (
@@ -11,7 +11,7 @@ function Note(props) {
           props.onChecked(props.id);
         }}
       >
-        <DeleteIcon />
+        <RemoveCircleIcon />
       </button>
     </div>
   );
