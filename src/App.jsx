@@ -1,13 +1,26 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Header from "./components/header/Header";
 import Footer from "./components/footer/Footer";
 import Note from "./components/note/Note";
 import CreateArea from "./components/createArea/CreateArea";
 
+const getLocalStorage = () => {
+  let note = localStorage.getItem('note');
+  if (note) {
+    return (note = JSON.parse(localStorage.getItem('note')));
+  } else {
+    return [];
+  }
+};
+
 const App = ()=> {
-  const [note, setNote] = useState([]);
+  const [note, setNote] = useState(getLocalStorage());
   const [isEditing, setIsEditing] = useState(false);
   const [editId, setEditID] = useState(null);
+
+  useEffect(() => {
+    localStorage.setItem('note', JSON.stringify(note));
+  }, [note]);
 
   const addNote = (input)=> {
     if (isEditing){
