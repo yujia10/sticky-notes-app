@@ -1,13 +1,11 @@
 import React, { useState } from "react";
-import AddIcon from "@mui/icons-material/Add";
-import Fab from "@mui/material/Fab";
-import Zoom from "@mui/material/Zoom";
 import './createArea.css'
+import {IoIosAddCircle} from 'react-icons/io'
 
-function CreateArea(props) {
+const CreateArea = ({addNote, clearAll, isEditing}) => {
   const [isExpanded, setExpanded] = useState(false);
 
-  function expand() {
+  const expand = () => {
     setExpanded(true);
   }
 
@@ -16,15 +14,15 @@ function CreateArea(props) {
     content: ""
   });
 
-  function handleChange(event) {
+  const handleChange = (event) => {
     const { name, value } = event.target;
     setInput((prevValue) => {
       return { ...prevValue, [name]: value };
     });
   }
 
-  function handleSubmit(event) {
-    props.onAdd(input);
+  const handleSubmit = (event) => {
+    addNote(input);
     event.preventDefault();
     setInput({
       title: "",
@@ -32,16 +30,21 @@ function CreateArea(props) {
     });
   }
 
+
   return (
     <div>
       <form className="create-note">
+
         {isExpanded && (
+          <>
+          <button className="btn-clear" onClick={clearAll}>clear all</button>
           <input
             onChange={handleChange}
             name="title"
             value={input.title}
             placeholder="Title"
           />
+          </>
         )}
         <textarea
           onChange={handleChange}
@@ -51,11 +54,14 @@ function CreateArea(props) {
           placeholder="Take a note..."
           rows={isExpanded ? 3 : 1}
         />
-        <Zoom in={isExpanded}>
-          <Fab onClick={handleSubmit}>
-            <AddIcon />
-          </Fab>
-        </Zoom>
+        {isEditing && (
+          <p className='edit-status'>editing... click + to update</p>
+        )}
+        {isExpanded && (
+          <button className='btn-add' onClick={handleSubmit}>
+            <IoIosAddCircle/>
+          </button>
+        )}
       </form>
     </div>
   );

@@ -1,17 +1,18 @@
+
 .note {
-  position:relative;
+  position: relative;
   background-color: var(--color-white);
-  width: 260px;
-  margin: 26px;
-  float: left;
-  padding: 20px 10px 10px 10px;
+  width: 300px;
+  min-height: 150px;
+  margin: 50px;
+  padding: 15px 10px 10px 15px;
   box-shadow: var(--card-shadow);
   border-radius: var(--border-radius);
 }
 .note:after {
   position: absolute;
-  left: 70%;
-  top: -15px;
+  left: 65%;
+  top: -17px;
   width: 100px;
   height: 30px;
   content: " ";
@@ -23,22 +24,30 @@
 
 }
 .note h1 {
-  font-size: 1.2em;
+  font-size: 1.2rem;
   margin-bottom: 6px;
+  font-weight: 600;
 }
 .note p {
-  font-size: 1em;
+  font-size: 1rem;
   margin-bottom: 10px;
   white-space: pre-wrap;
   word-wrap: break-word;
+  font-weight: 400;
 }
 
+.button-group{
+  position:absolute;
+  right:5px;
+  bottom:0;
+  display: flex;
+  justify-content: space-between;
+}
 .note button {
-  position: relative;
-  float: right;
-  background: #fff;
+  background: transparent;
   margin-right: 5px;
   color: var(--color-primary);
+  font-size: 18px;
   border: none;
   width: 30px;
   height: 30px;

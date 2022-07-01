@@ -1,20 +1,30 @@
 import React from "react";
-import RemoveCircleIcon from '@mui/icons-material/RemoveCircle';
 import './note.css'
+import {BsFillTrashFill} from 'react-icons/bs'
+import {AiFillEdit} from 'react-icons/ai'
 
-function Note({id,title,content,onChecked}) {
+const Note = ({id,title,content,onChecked,editNote}) => {
   return (
-    <div className="note">
-      <h1>{title}</h1>
-      <p>{content}</p>
-      <button
-        onClick={() => {
-          onChecked(id);
-        }}
-      >
-        <RemoveCircleIcon />
-      </button>
-    </div>
+    <div className="note-container">
+      <div className="note">
+        <h1>{title}</h1>
+        <p>{content}</p>
+        <div className="button-group">
+          <button
+            onClick={() => {
+              onChecked(id);
+            }}
+          >
+          <BsFillTrashFill />
+          </button>
+          <button onClick={()=>{
+            editNote(id);
+            }}>
+            <AiFillEdit/>
+          </button>
+        </div>
+      </div>
+     </div>
   );
 }
 

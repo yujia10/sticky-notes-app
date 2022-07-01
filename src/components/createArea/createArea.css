@@ -14,26 +14,55 @@ form.create-note textarea {
   border: none;
   padding: 4px;
   outline: none;
-  font-size: 1.2em;
+  font-size: 20px;
   font-family: inherit;
   resize: none;
 }
+form.create-note input {
+  font-weight: 600;
+}
 
-form.create-note button {
+form.create-note .btn-add {
   position: absolute;
   right: 18px;
-  bottom: -18px;
-  background: var(--color-primary);
-  color: var(--color-white);
+  bottom: 18px;
+  color: var(--color-primary);
+  background: transparent;
   border: none;
-  border-radius: 50%;
   width: 36px;
   height: 36px;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+  font-size: 36px;
   cursor: pointer;
-  outline: none;
 }
-form.create-note button:hover {
+
+form.create-note .btn-add:hover {
   color: var(--color-hover);
   transition: 0.3s;
+}
+
+form.create-note .btn-clear{
+  position: absolute;
+  right: 18px;
+  top: 18px;
+  color: var(--color-primary);
+  background: transparent;
+  border: none;
+  text-decoration: underline;
+  font-size: 14px;
+  cursor: pointer;
+}
+form.create-note .btn-clear:hover {
+  color: var(--color-hover);
+}
+
+.edit-status{
+  color: var(--color-light);
+  font-size: 14px;
+  font-style: italic;
+}
+
+@media screen and (max-width: 640px){
+  form.create-note {
+    width: 400px;
+  }
 }
