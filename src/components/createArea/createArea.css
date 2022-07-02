@@ -59,6 +59,27 @@ form.create-note .btn-clear:hover {
   color: var(--color-light);
   font-size: 14px;
   font-style: italic;
+  letter-spacing: 2px;
+}
+
+.alert {
+  margin-top: 16px;
+  height: 20px;
+  width:80%;
+  line-height: 20px;
+  text-align: center;
+  font-size: 12px;
+  border-radius: 4px;
+  letter-spacing: 2px;
+  text-transform: capitalize;
+}
+.alert-danger {
+  color: #721c24;
+  background: #f8d7da;
+}
+.alert-success {
+  color: #557C55;
+  background: #F2FFE9;
 }
 
 @media screen and (max-width: 640px){

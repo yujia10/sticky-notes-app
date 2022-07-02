@@ -17,6 +17,7 @@ const App = ()=> {
   const [note, setNote] = useState(getLocalStorage());
   const [isEditing, setIsEditing] = useState(false);
   const [editId, setEditID] = useState(null);
+  const [alert, setAlert] = useState({show: false, msg:'', type:''})
 
   useEffect(() => {
     localStorage.setItem('note', JSON.stringify(note));
@@ -35,7 +36,9 @@ const App = ()=> {
       );
       setEditID(null);
       setIsEditing(false);
+      showAlert(true, 'task updated successfully', 'success')
     } else {
+      showAlert( true, 'task added to the list', 'success')
       setNote((prevNotes) => {
         return [...prevNotes, input];
       });
@@ -48,6 +51,7 @@ const App = ()=> {
         return index !== id;
       });
     });
+    showAlert(true, 'task removed', 'danger')
   }
 
   const editNote = (id) => {
@@ -57,13 +61,25 @@ const App = ()=> {
 
   const clearAll = ()=>{
     setNote([])
+    showAlert(true, 'empty list','danger')
   }
+
+  const showAlert = (show = false, msg = '', type = '') => {
+    setAlert({ show, msg, type });
+  }
+
+  useEffect(() => {
+    const timeout = setTimeout(() => {
+      showAlert();
+    }, 3000);
+    return () => clearTimeout(timeout);
+  }, [note]);
 
   return (
     <div className="page-container">
       <div className="content-wrap">
         <Header />
-        <CreateArea addNote={addNote} clearAll={clearAll} isEditing={isEditing}/>
+        <CreateArea addNote={addNote} clearAll={clearAll} isEditing={isEditing} {...alert}/>
         <div className="task-container">
           {note.map((noteItem, index) => (
             <Note

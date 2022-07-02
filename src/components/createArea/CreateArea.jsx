@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import './createArea.css'
 import {IoIosAddCircle} from 'react-icons/io'
 
-const CreateArea = ({addNote, clearAll, isEditing}) => {
+const CreateArea = ({addNote, clearAll, isEditing, show, type, msg}) => {
   const [isExpanded, setExpanded] = useState(false);
 
   const expand = () => {
@@ -56,6 +56,9 @@ const CreateArea = ({addNote, clearAll, isEditing}) => {
         />
         {isEditing && (
           <p className='edit-status'>editing... click + to update</p>
+        )}
+        {show && (
+          <p className={`alert alert-${type}`}>{msg}</p>
         )}
         {isExpanded && (
           <button className='btn-add' onClick={handleSubmit}>
